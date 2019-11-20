@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="-1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Solicitud"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:textStyle="bold"></TextView>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alumno:"
+                        android:textColor="#000"
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:minHeight="100px"
+                        android:minWidth="100px"/>
+
+                    <TextView
+                        android:id="@+id/txtNumControlAlumno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alumno:"
+                        android:layout_weight="1"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:minHeight="100px"
+                        android:minWidth="100px"/>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Coordinador:"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:minHeight="100px"
+                        android:minWidth="100px"/>
+
+                    <TextView
+                        android:id="@+id/txtNumControlCoordinador"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Coordinador"
+                        android:layout_weight="1"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:minHeight="100px"
+                        android:minWidth="100px"
+                        />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Semestre"
+                        android:textColor="#000"
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:minHeight="100px"
+                        android:minWidth="100px"/>
+
+                    <TextView
+                        android:id="@+id/txtSemestre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Semestre"
+                        android:textColor="#000"
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:minHeight="100px"
+                        android:minWidth="100px"
+                        />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carrera actual: "
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:minHeight="100px"
+                        android:minWidth="100px"/>
+
+                    <TextView
+                        android:id="@+id/txtCarreraActual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carrera"
+                        android:textColor="#000"
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:minHeight="100px"
+                        android:minWidth="100px"
+                        />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nueva carrera: "
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:minHeight="100px"
+                        android:minWidth="100px"/>
+
+                    <TextView
+                        android:id="@+id/txtCarreraACambiarse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carrera"
+                        android:textColor="#000"
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:minHeight="100px"
+                        android:minWidth="100px"
+                        />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estatus: "
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:minHeight="100px"
+                        android:minWidth="100px"/>
+
+                    <TextView
+                        android:id="@+id/txtEstatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estatus"
+                        android:layout_weight="1"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:minHeight="100px"
+                        android:minWidth="100px"
+                        />
+                </TableRow>
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Resultado Examen: "
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:layout_weight="1"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtResultado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Resultado"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        />
+                </TableRow>
+
+            </TableLayout>
+
+
+
+            <Button
+                android:id="@+id/Convalidar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:layout_marginTop="10dp"
+                android:background="@drawable/buttonrounded"
+                android:text="Convalidar materias" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
