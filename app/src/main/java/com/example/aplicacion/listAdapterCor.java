@@ -28,7 +28,7 @@ public class listAdapterCor extends CursorAdapter {
     public void bindView(final View view, final Context context, final Cursor cursor) {
         db = new DatabaseHelper(context);
         TextView textViewName = (TextView) view.findViewById(R.id.txtNumControlAlumno);
-        TextView textViewCoordinador = (TextView) view.findViewById(R.id.txtNumControlCoordinador);
+
         TextView textViewSemestre = (TextView) view.findViewById(R.id.txtSemestre);
         TextView textViewCarreraActual = (TextView) view.findViewById(R.id.txtCarreraActual);
         TextView textViewCarreraACambiar = (TextView) view.findViewById(R.id.txtCarreraACambiarse);
@@ -48,7 +48,7 @@ public class listAdapterCor extends CursorAdapter {
         String carreraacambiar = db.getNameFromCareer(Integer.valueOf(TableCarreraACambiar));
 
         textViewName.setText(TableIDUsuario);
-        textViewCoordinador.setText(TableIDCoordinador);
+
         textViewSemestre.setText(TableSemestre);
         textViewEstatus.setText(Estatus);
         textViewCarreraActual.setText(carreraactual);
@@ -64,6 +64,10 @@ public class listAdapterCor extends CursorAdapter {
         }
         if(Estatus.equals("En proceso")){
             buttonConvalidar.setVisibility(view.GONE);
+        }
+        if(Estatus.equals("Confirmado")){
+            buttonConvalidar.setVisibility(view.GONE);
+            buttonRechazar.setVisibility(view.GONE);
         }
 
         buttonConvalidar.setOnClickListener(new View.OnClickListener() {

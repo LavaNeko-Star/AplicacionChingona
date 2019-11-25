@@ -16,7 +16,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="-3dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="-1dp">
+        android:layout_marginEnd="-1dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,31 +63,8 @@
                         android:minWidth="100px"/>
                 </TableRow>
 
-                <TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Coordinador:"
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                        android:layout_weight="1"
-                        android:textStyle="bold"
-                        android:minHeight="100px"
-                        android:minWidth="100px"/>
 
-                    <TextView
-                        android:id="@+id/txtNumControlCoordinador"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Coordinador"
-                        android:layout_weight="1"
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                        android:minHeight="100px"
-                        android:minWidth="100px"
-                        />
-                </TableRow>
 
                 <TableRow>
 

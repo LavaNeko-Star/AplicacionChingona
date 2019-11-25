@@ -27,27 +27,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String Table_name7 = "DepartamentoDeDesarrolloAcademico";
     public static final String Table_name8 = "DepartamentoDeServiciosEscolares";
     public static final String Table_name9 = "Solicitud";
+    public static final String Table_name10 = "Examen";
 
     public static final String col_1 = "NumControl";
     public static final String col_2 = "ID";
     public static final String col_3 = "Password";
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, Database_name, null, 22);
+        super(context, Database_name, null, 23);
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Carrera (IDCarrera INTEGER PRIMARY KEY, NombreCarrera Text)");
+        db.execSQL("CREATE TABLE Usuario (IDUsuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,Nombre TEXT,ApellidoPaterno TEXT,ApellidoMaterno TEXT)");
+        db.execSQL("CREATE TABLE Examen (IDExamen INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,FechaRealizacion TEXT,FechaRealizado TEXT,ResultadoExamen TEXT )");
         db.execSQL("CREATE TABLE Materia (IDMateria INTEGER PRIMARY KEY, NombreMateria Text,IDCarrera INTEGER, FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera))");
-        db.execSQL("CREATE TABLE Calificacion(IDCalificacion INTEGER PRIMARY KEY, Calificacion INTEGER, IDUsuario INTEGER,IDMateria INTEGER, FOREIGN KEY (IDUsuario) REFERENCES Usuario(NumControl), FOREIGN KEY (IDMateria) REFERENCES Materia(IDMateria))");
-        db.execSQL("CREATE TABLE Usuario (NumControl INTEGER PRIMARY KEY, ID INTEGER,Password TEXT, IDCarrera INTEGER,Semestre INTEGER, FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera))");
+        db.execSQL("CREATE TABLE Calificacion(IDCalificacion INTEGER PRIMARY KEY, Calificacion INTEGER, IDEstudiante INTEGER,IDMateria INTEGER, FOREIGN KEY (IDEstudiante) REFERENCES Estudiante(NumControl), FOREIGN KEY (IDMateria) REFERENCES Materia(IDMateria))");
+        db.execSQL("CREATE TABLE Estudiante (IDUsuario INTEGER NOT NULL,NumControl INTEGER PRIMARY KEY, ID INTEGER,Password TEXT, IDCarrera INTEGER,Semestre INTEGER, FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera),FOREIGN KEY (IDUsuario) REFERENCES Usuario(IDUsuario))");
         db.execSQL("CREATE TABLE Coordinador (NumControlCoordinador INTEGER PRIMARY KEY, ID INTEGER,Password TEXT,IDCarrera TEXT,FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera))");
         db.execSQL("CREATE TABLE Academia (NumControlAcademia INTEGER PRIMARY KEY, ID INTEGER, Password TEXT,IDCarrera INTEGER,FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera))");
         db.execSQL("CREATE TABLE DepartamentoDeDesarrolloAcademico (NumControlDesarrollo INTEGER PRIMARY KEY, ID INTEGER, Password TEXT)");
         db.execSQL("CREATE TABLE DepartamentoDeServiciosEscolares (NumControlServicios INTEGER PRIMARY KEY, ID INTEGER, Password TEXT)");
-        db.execSQL("CREATE TABLE Solicitud(IDSolicitud INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,NumControlUsuario INTEGER, NumControlCoordinador INTEGER,NumControlAcademia INTEGER, IDCarreraActual INTEGER, IDCarreraACambiar INTEGER,FechaRealizacion TEXT,SemestreUsuario INTEGER,Status TEXT,AutorizacionExamen INTEGER,ResultadoExamen Text,ConvalidacionFinalizada INTEGER,FOREIGN KEY (NumControlUsuario) REFERENCES Usuario(NumControl), FOREIGN KEY (NumControlCoordinador) REFERENCES Coordinador(NumControlCoordinador),FOREIGN KEY (IDCarreraActual) REFERENCES Usuario(IDCarrera), FOREIGN KEY (IDCarreraACambiar) REFERENCES Carrera(IDCarrera), FOREIGN KEY (SemestreUsuario) REFERENCES Usuario(Semestre),FOREIGN KEY (NumControlAcademia) REFERENCES Academia(NumControlAcademia))");
+        db.execSQL("CREATE TABLE Solicitud(IDSolicitud INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,NumControlUsuario INTEGER, NumControlCoordinador INTEGER,NumControlAcademia INTEGER, IDCarreraActual INTEGER, IDCarreraACambiar INTEGER,FechaRealizacion TEXT,SemestreUsuario INTEGER,Status TEXT,AutorizacionExamen INTEGER,ResultadoExamen Text,ConvalidacionFinalizada INTEGER,FOREIGN KEY (NumControlUsuario) REFERENCES Estudiante(NumControl), FOREIGN KEY (NumControlCoordinador) REFERENCES Coordinador(NumControlCoordinador),FOREIGN KEY (IDCarreraActual) REFERENCES Usuario(IDCarrera), FOREIGN KEY (IDCarreraACambiar) REFERENCES Carrera(IDCarrera),FOREIGN KEY (NumControlAcademia) REFERENCES Academia(NumControlAcademia))");
     }
 
     @Override
@@ -61,23 +64,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + Table_name7);
         db.execSQL("DROP TABLE IF EXISTS " + Table_name8);
         db.execSQL("DROP TABLE IF EXISTS " + Table_name9);
+        db.execSQL("DROP TABLE IF EXISTS " + Table_name10);
         onCreate(db);
 
     }
 
-    public long addUser(Integer NumControl, Integer ID, String Password, Integer IDCarrera, Integer Semestre) {
+
+
+
+    public long addEstudiante(Integer IDUsuario,Integer NumControl, Integer ID, String Password, Integer IDCarrera, Integer Semestre) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put("IDUsuario",IDUsuario);
         contentValues.put("NumControl", NumControl);
         contentValues.put("ID", 1);
         contentValues.put("Password", Password);
         contentValues.put("IDCarrera", IDCarrera);
         contentValues.put("Semestre", Semestre);
-        long res = db.insert("Usuario", null, contentValues);
+        long res = db.insert("Estudiante", null, contentValues);
         db.close();
         return res;
 
     }
+    public long addExamen(String FechaRealizacion) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("FechaRealizacion", FechaRealizacion);
+        long res = db.insert("Examen", null, contentValues);
+        db.close();
+        return res;
+    }
+    public long addUsuario(String Nombre,String ApellidoPaterno,String ApellidoMaterno) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Nombre", Nombre);
+        contentValues.put("ApellidoPaterno",ApellidoPaterno);
+        contentValues.put("ApellidoPaterno",ApellidoMaterno);
+        long res = db.insert("Usuario", null, contentValues);
+        db.close();
+        return res;
+    }
+
 
     public long addSolicitud(Integer NumControlUsuario, Integer NumControlCoordinador, Integer NumControlAcademia, Integer IDCarreraActual, Integer IDCarreraACambiar, String FechaRealizacion, Integer SemestreUsuario) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -102,7 +129,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean checkUser(String NumControl, String password) {
 
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from Usuario where NumControl = ? and Password = ?", new String[]{NumControl, password});
+        Cursor cursor = db.rawQuery("select * from Estudiante where NumControl = ? and Password = ?", new String[]{NumControl, password});
         Cursor cursor2 = db.rawQuery("select * from Coordinador where NumControlCoordinador = ? and Password = ?", new String[]{NumControl, password});
         Cursor cursor3 = db.rawQuery("select * from DepartamentoDeServiciosEscolares where NumControlServicios = ? and Password = ?", new String[]{NumControl, password});
         Cursor cursor4 = db.rawQuery("select * from Academia where NumControlAcademia = ? and Password = ?", new String[]{NumControl, password});
@@ -152,7 +179,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int abc = Integer.valueOf(ab);
         if (abc < 20) {
             SQLiteDatabase db = getReadableDatabase();
-            Cursor cursor = db.query("Usuario", new String[]{"ID",}, "NumControl" + "=?", new String[]{NumControl}, null, null, null, null);
+            Cursor cursor = db.query("Estudiante", new String[]{"ID",}, "NumControl" + "=?", new String[]{NumControl}, null, null, null, null);
             if ((cursor != null) && (cursor.getCount() > 0)) {
                 cursor.moveToFirst();
                 res = cursor.getInt(cursor.getColumnIndex("ID"));
@@ -225,7 +252,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getDataUser(String NumControl) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursoru = db.rawQuery("select * from Usuario where NumControl =?", new String[]{NumControl});
+        Cursor cursoru = db.rawQuery("select * from Estudiante where NumControl =?", new String[]{NumControl});
+        return cursoru;
+    }
+    public Cursor getLastUser() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "select seq from sqlite_sequence where name='Usuario';";
+        Cursor cursoru = db.rawQuery(selectQuery,null);
         return cursoru;
     }
 

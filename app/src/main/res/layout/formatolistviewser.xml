@@ -17,7 +17,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="-3dp"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="-1dp">
+            android:layout_marginEnd="-1dp"
+    >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,30 +66,6 @@
                             android:textSize="20sp" />
                     </TableRow>
 
-                    <TableRow>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Coordinador:"
-                            android:minHeight="100px"
-                            android:minWidth="100px"
-                            android:textColor="#000"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtNumControlCoordinador"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Coordinador"
-                            android:textColor="#000"
-                            android:minHeight="100px"
-                            android:minWidth="100px"
-                            android:textSize="20sp" />
-                    </TableRow>
 
                     <TableRow>
 
@@ -189,7 +166,31 @@
                             android:textColor="#000"
                             android:textSize="20sp" />
                     </TableRow>
+                    <TableRow>
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Resultado Examen: "
+                            android:textColor="#000"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:minHeight="100px"
+                            android:minWidth="100px"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/txtResultado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Resultado"
+                            android:textColor="#000"
+                            android:textSize="20sp"
+                            android:layout_weight="1"
+                            android:minHeight="100px"
+                            android:minWidth="100px"
+                            />
+                    </TableRow>
 
                 </TableLayout>
 

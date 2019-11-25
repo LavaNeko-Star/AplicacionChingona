@@ -62,25 +62,6 @@
                         android:textSize="20sp" />
                 </TableRow>
 
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Coordinador:"
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtNumControlCoordinador"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Coordinador"
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                       />
-                </TableRow>
 
                 <TableRow>
 

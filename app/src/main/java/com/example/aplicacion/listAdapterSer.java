@@ -24,7 +24,6 @@ public class listAdapterSer extends CursorAdapter {
 db = new DatabaseHelper(context);
 
         TextView textViewName = (TextView) view.findViewById(R.id.txtNumControlAlumno);
-        TextView textViewCoordinador = (TextView) view.findViewById(R.id.txtNumControlCoordinador);
         TextView textViewSemestre = (TextView) view.findViewById(R.id.txtSemestre);
         TextView textViewCarreraActual = (TextView) view.findViewById(R.id.txtCarreraActual);
         TextView textViewCarreraACambiar = (TextView) view.findViewById(R.id.txtCarreraACambiarse);
@@ -41,7 +40,6 @@ db = new DatabaseHelper(context);
         String carreraacambiar = db.getNameFromCareer(Integer.valueOf(TableCarreraACambiar));
 
         textViewName.setText(TableIDUsuario);
-        textViewCoordinador.setText(TableIDCoordinador);
         textViewSemestre.setText(TableSemestre);
         textViewEstatus.setText(Estatus);
         textViewCarreraActual.setText(carreraactual);
