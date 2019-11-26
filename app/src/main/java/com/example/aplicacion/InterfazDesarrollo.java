@@ -38,7 +38,7 @@ TNumControlDesarrollo =(TextView)findViewById(R.id.TNumControlDesarrollo);
         TID = (TextView)findViewById(R.id.TID);
 
         while (cursor.moveToNext()) {
-            id = cursor.getInt(1);
+            id = cursor.getInt(cursor.getColumnIndex("ID"));
 
         }
         TID.setText(String.valueOf(id));

@@ -36,9 +36,9 @@ public class InterfazUsuario extends AppCompatActivity {
         Cursor cursor = db.getDataUser(TNumControl2);
 
         while (cursor.moveToNext()) {
-            ID = cursor.getInt(1);
-            IDCarrera = cursor.getInt(3);
-            Semestre = cursor.getInt(4);
+            ID = cursor.getInt(cursor.getColumnIndex("ID"));
+            IDCarrera = cursor.getInt(cursor.getColumnIndex("IDCarrera"));
+            Semestre = cursor.getInt(cursor.getColumnIndex("Semestre"));
 
         }
         String nombrecarrera = db.getNameFromCareer(IDCarrera);

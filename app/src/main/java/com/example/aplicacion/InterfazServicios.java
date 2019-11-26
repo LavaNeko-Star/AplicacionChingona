@@ -32,8 +32,8 @@ public class InterfazServicios extends AppCompatActivity {
         Cursor cursor = db.getDataServicios(NumControl2);
 
         while (cursor.moveToNext()) {
-             numcontrol = cursor.getInt(0);
-             id = cursor.getInt(1);
+             numcontrol = cursor.getInt(cursor.getColumnIndex("NumControlServicios"));
+             id = cursor.getInt(cursor.getColumnIndex("ID"));
         }
         TIDServicios.setText(String.valueOf(id));
         TNumControlServicios.setText(String.valueOf(numcontrol));

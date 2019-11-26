@@ -32,9 +32,9 @@ public class InterfazAcademia extends AppCompatActivity {
         mButtonVerSolicitud = (Button)findViewById(R.id.mButtonVerSolicitudAcade);
 
         while (cursor.moveToNext()) {
-            numcontrol = cursor.getInt(0);
-            id = cursor.getInt(1);
-            idcarrera = cursor.getInt(3);
+            numcontrol = cursor.getInt(cursor.getColumnIndex("NumControlAcademia"));
+            id = cursor.getInt(cursor.getColumnIndex("ID"));
+            idcarrera = cursor.getInt(cursor.getColumnIndex("IDCarrera"));
         }
         String carrera = db.getNameFromCareer(idcarrera);
 

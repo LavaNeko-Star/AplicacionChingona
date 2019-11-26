@@ -92,31 +92,6 @@
                         />
                 </TableRow>
 
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Carrera actual: "
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                        android:layout_weight="1"
-                        android:textStyle="bold"
-                        android:minHeight="100px"
-                        android:minWidth="100px"/>
-
-                    <TextView
-                        android:id="@+id/txtCarreraActual"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Carrera"
-                        android:textColor="#000"
-                        android:layout_weight="1"
-                        android:textSize="20sp"
-                        android:minHeight="100px"
-                        android:minWidth="100px"
-                        />
-                </TableRow>
 
                 <TableRow>
 

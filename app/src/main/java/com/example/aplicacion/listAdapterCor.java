@@ -1,6 +1,7 @@
 package com.example.aplicacion;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -36,7 +37,7 @@ public class listAdapterCor extends CursorAdapter {
 
         final Button buttonConvalidar = (Button) view.findViewById(R.id.Enviaracoonvalidacion);
         final Button buttonRechazar = (Button) view.findViewById(R.id.Rechazar);
-
+        Button verperfil =(Button)view.findViewById(R.id.Verperfil);
         final String TableIDUsuario = cursor.getString(cursor.getColumnIndex("NumControlUsuario"));
         final String TableIDCoordinador = cursor.getString(cursor.getColumnIndex("NumControlCoordinador"));
         String TableSemestre = cursor.getString(cursor.getColumnIndex("SemestreUsuario"));
@@ -114,6 +115,14 @@ public class listAdapterCor extends CursorAdapter {
 
 
 
+        });
+        verperfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent moving = new Intent(context,PerfilUsuario.class);
+                moving.putExtra("NumControl",TableIDUsuario);
+                context.startActivity(moving);
+            }
         });
     }
 

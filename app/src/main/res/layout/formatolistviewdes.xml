@@ -90,31 +90,7 @@
                         />
                 </TableRow>
 
-                <TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Carrera actual: "
-                        android:textColor="#000"
-                        android:minHeight="100px"
-                        android:minWidth="100px"
-                        android:textSize="20sp"
-                        android:layout_weight="1"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtCarreraActual"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Carrera"
-                        android:minHeight="100px"
-                        android:minWidth="100px"
-                        android:textColor="#000"
-                        android:layout_weight="1"
-                        android:textSize="20sp"
-                        />
-                </TableRow>
 
                 <TableRow>
 
@@ -166,6 +142,26 @@
                         android:textColor="#000"
                         android:textSize="20sp"
                         />
+                </TableRow>
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Resultado Examen: "
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtResultado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Resultado"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
                 </TableRow>
 
 

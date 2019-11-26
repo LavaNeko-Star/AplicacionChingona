@@ -52,8 +52,8 @@ public class BookingActivity extends AppCompatActivity {
         Cursor cursor = db.getDataUser(TNumControl2);
 
         while (cursor.moveToNext()) {
-            IDCarrera = cursor.getInt(3);
-            Semestre = cursor.getInt(4);
+            IDCarrera = cursor.getInt(cursor.getColumnIndex("IDCarrera"));
+            Semestre = cursor.getInt(cursor.getColumnIndex("Semestre"));
         }
 
 

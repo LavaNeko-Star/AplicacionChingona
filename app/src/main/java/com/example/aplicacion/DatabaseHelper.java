@@ -46,10 +46,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE Materia (IDMateria INTEGER PRIMARY KEY, NombreMateria Text,IDCarrera INTEGER, FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera))");
         db.execSQL("CREATE TABLE Calificacion(IDCalificacion INTEGER PRIMARY KEY, Calificacion INTEGER, IDEstudiante INTEGER,IDMateria INTEGER, FOREIGN KEY (IDEstudiante) REFERENCES Estudiante(NumControl), FOREIGN KEY (IDMateria) REFERENCES Materia(IDMateria))");
         db.execSQL("CREATE TABLE Estudiante (IDUsuario INTEGER NOT NULL,NumControl INTEGER PRIMARY KEY, ID INTEGER,Password TEXT, IDCarrera INTEGER,Semestre INTEGER, FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera),FOREIGN KEY (IDUsuario) REFERENCES Usuario(IDUsuario))");
-        db.execSQL("CREATE TABLE Coordinador (NumControlCoordinador INTEGER PRIMARY KEY, ID INTEGER,Password TEXT,IDCarrera TEXT,FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera))");
-        db.execSQL("CREATE TABLE Academia (NumControlAcademia INTEGER PRIMARY KEY, ID INTEGER, Password TEXT,IDCarrera INTEGER,FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera))");
-        db.execSQL("CREATE TABLE DepartamentoDeDesarrolloAcademico (NumControlDesarrollo INTEGER PRIMARY KEY, ID INTEGER, Password TEXT)");
-        db.execSQL("CREATE TABLE DepartamentoDeServiciosEscolares (NumControlServicios INTEGER PRIMARY KEY, ID INTEGER, Password TEXT)");
+        db.execSQL("CREATE TABLE Coordinador (IDUsuario INTEGER NOT NULL,NumControlCoordinador INTEGER PRIMARY KEY, ID INTEGER,Password TEXT,IDCarrera TEXT,FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera),FOREIGN KEY (IDUsuario) REFERENCES Usuario(IDUsuario))");
+        db.execSQL("CREATE TABLE Academia (IDUsuario INTEGER NOT NULL,NumControlAcademia INTEGER PRIMARY KEY, ID INTEGER, Password TEXT,IDCarrera INTEGER,FOREIGN KEY (IDCarrera) REFERENCES Carrera(IDCarrera),FOREIGN KEY (IDUsuario) REFERENCES Usuario(IDUsuario))");
+        db.execSQL("CREATE TABLE DepartamentoDeDesarrolloAcademico (IDUsuario INTEGER NOT NULL,NumControlDesarrollo INTEGER PRIMARY KEY, ID INTEGER, Password TEXT,FOREIGN KEY (IDUsuario) REFERENCES Usuario(IDUsuario))");
+        db.execSQL("CREATE TABLE DepartamentoDeServiciosEscolares (IDUsuario INTEGER NOT NULL,NumControlServicios INTEGER PRIMARY KEY, ID INTEGER, Password TEXT,FOREIGN KEY (IDUsuario) REFERENCES Usuario(IDUsuario))");
         db.execSQL("CREATE TABLE Solicitud(IDSolicitud INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,NumControlUsuario INTEGER, NumControlCoordinador INTEGER,NumControlAcademia INTEGER, IDCarreraActual INTEGER, IDCarreraACambiar INTEGER,FechaRealizacion TEXT,SemestreUsuario INTEGER,Status TEXT,AutorizacionExamen INTEGER,ResultadoExamen Text,ConvalidacionFinalizada INTEGER,FOREIGN KEY (NumControlUsuario) REFERENCES Estudiante(NumControl), FOREIGN KEY (NumControlCoordinador) REFERENCES Coordinador(NumControlCoordinador),FOREIGN KEY (IDCarreraActual) REFERENCES Usuario(IDCarrera), FOREIGN KEY (IDCarreraACambiar) REFERENCES Carrera(IDCarrera),FOREIGN KEY (NumControlAcademia) REFERENCES Academia(NumControlAcademia))");
     }
 
@@ -99,7 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("Nombre", Nombre);
         contentValues.put("ApellidoPaterno",ApellidoPaterno);
-        contentValues.put("ApellidoPaterno",ApellidoMaterno);
+        contentValues.put("ApellidoMaterno",ApellidoMaterno);
         long res = db.insert("Usuario", null, contentValues);
         db.close();
         return res;
@@ -452,6 +452,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getDataSer(String status) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursoru = db.rawQuery("select * from Solicitud where Status =?", new String[]{status});
+        return cursoru;
+    }
+    public Cursor getDataProfileU(String NumControl) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursoru = db.rawQuery("Select * from Estudiante e,Usuario u where e.IDUsuario=u.IDUsuario and e.NumControl = ?", new String[]{NumControl});
         return cursoru;
     }
     public Cursor getDataAcademia(String NumControlAcademia){

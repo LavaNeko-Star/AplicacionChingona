@@ -83,25 +83,7 @@
                      />
                 </TableRow>
 
-                <TableRow>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Carrera actual: "
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtCarreraActual"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Carrera"
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                        />
-                </TableRow>
 
                 <TableRow>
 
@@ -172,17 +154,17 @@
 
                 android:layout_marginTop="10dp"
                 android:background="@drawable/buttonrounded"
-                android:text="Confirmar" />
+                android:text="Confirmar cambio de carrera" />
 
             <Button
                 android:id="@+id/Cancelar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Cancelar"
-                android:background="@drawable/buttonrounded"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/buttonrounded"
 
-                android:text="CANCELAR" />
+                android:text="CANCELAR solicitud" />
 
         </LinearLayout>
 

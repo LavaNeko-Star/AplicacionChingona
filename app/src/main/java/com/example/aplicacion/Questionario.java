@@ -154,10 +154,10 @@ public class Questionario extends AppCompatActivity {
             resultado="Salud";
         }
         if(array.get(0)==Ciencia){
-            resultado="Ciencia";
+            resultado="Ciencias";
         }
         if(array.get(0)==Arte){
-            resultado="Arte";
+            resultado="Artes";
         }
 
 

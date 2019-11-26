@@ -92,30 +92,8 @@
                         android:textSize="20sp" />
                 </TableRow>
 
-                <TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minWidth="100px"
-                        android:minHeight="100px"
-                        android:text="Carrera actual: "
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txtCarreraActual"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minWidth="100px"
-                        android:minHeight="100px"
-                        android:text="Carrera"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-                </TableRow>
 
                 <TableRow>
 
@@ -212,6 +190,17 @@
                 android:background="@drawable/buttonrounded"
 
                 android:text="Rechazar" />
+
+            <Button
+                android:id="@+id/Verperfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@+id/Rechazar"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/buttonrounded"
+
+                android:text="Ver perfil" />
 
         </LinearLayout>
     </LinearLayout>
